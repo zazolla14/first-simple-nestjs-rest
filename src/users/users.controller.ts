@@ -9,15 +9,16 @@ import {
   Post,
   Put,
   UseFilters,
-} from '@nestjs/common';
-import { CreateUserDto } from './create-user.dto';
-import { EntityNotFoundExceprtionFilter } from './entity-not-found-exception.filter';
-import { UsersService } from './users.service';
+} from "@nestjs/common";
+import { CreateUserDto } from "./create-user.dto";
+import { EntityNotFoundExceprtionFilter } from "./entity-not-found-exception.filter";
+import { UsersService } from "./users.service";
 
-@Controller('users')
+@Controller("users")
 @UseFilters(EntityNotFoundExceprtionFilter)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+  //   asdjasiodhasdhoasdhoasd
 
   @Get()
   async findAll() {
@@ -25,8 +26,9 @@ export class UsersController {
       data: await this.usersService.findAll(),
     };
   }
-  @Get(':id')
-  async findOne(@Param('id') id: number) {
+  //   asdasda ->
+  @Get(":id")
+  async findOne(@Param("id") id: number) {
     return {
       data: await this.usersService.findOne(id),
     };
@@ -39,16 +41,16 @@ export class UsersController {
     };
   }
 
-  @Put(':id')
-  async update(@Param('id') id: number, @Body() data: CreateUserDto) {
+  @Put(":id")
+  async update(@Param("id") id: number, @Body() data: CreateUserDto) {
     return {
       data: await this.usersService.update(id, data),
     };
   }
 
-  @Delete(':id')
+  @Delete(":id")
   @HttpCode(HttpStatus.NO_CONTENT)
-  async delete(@Param('id') id: number) {
+  async delete(@Param("id") id: number) {
     await this.usersService.delete(id);
     // return {
     //   message: 'success deleted data',
