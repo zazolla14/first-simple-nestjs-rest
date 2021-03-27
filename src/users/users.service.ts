@@ -11,28 +11,26 @@ export class UsersService {
                 private readonly usersRepository: Repository<User>,
         ) {}
 
-        findAll() {
-                return this.usersRepository.find()
+        async findAll() {
+                return await this.usersRepository.find()
         }
 
-        findOne(id: number) {
-                return this.usersRepository.findOneOrFail(id)
+        async findOne(id: number) {
+                return await this.usersRepository.findOneOrFail(id)
         }
 
-        create(data: CreateUserDto) {
-                // const user = new User()
-                // user.firstName = data.firstName
-                // user.lastName = data.lastName
-                // user.email = data.email
-                // user.isActive = data.isActive
-                return this.usersRepository.save(data)
+        async create(data: CreateUserDto) {
+                return await this.usersRepository.save(data)
         }
 
-        update(id: number, data: CreateUserDto) {
-                return this.usersRepository.save({ id: Number(id), ...data })
+        async update(id: number, data: CreateUserDto) {
+                return await this.usersRepository.save({
+                        id: Number(id),
+                        ...data,
+                })
         }
 
-        delete(id: number) {
-                return this.usersRepository.delete(id)
+        async delete(id: number) {
+                return await this.usersRepository.delete(id)
         }
 }

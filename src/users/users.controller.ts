@@ -51,8 +51,5 @@ export class UsersController {
         @HttpCode(HttpStatus.NO_CONTENT)
         async delete(@Param('id') id: number) {
                 await this.usersService.delete(id)
-                // return {
-                //   message: 'success deleted data',
-                // };
         }
 }
